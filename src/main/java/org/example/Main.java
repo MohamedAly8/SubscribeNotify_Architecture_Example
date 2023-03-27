@@ -50,16 +50,16 @@ public class Main {
                     Subscriber subscriber = null;
                     switch (type) {
                         case "even":
-                            subscriber = new isEvenSubscriber();
+                            subscriber = isEvenSubscriber;
                             break;
                         case "odd":
-                            subscriber = new isOddSubscriber();
+                            subscriber = isOddSubscriber;
                             break;
                         case "prime":
-                            subscriber = new isPrimeSubscriber();
+                            subscriber = isPrimeSubscriber;
                             break;
                         case "composite":
-                            subscriber = new isCompositeSubscriber();
+                            subscriber = isCompositeSubscriber;
                             break;
                         default:
                             System.out.println("Invalid subscriber type.");
@@ -67,8 +67,15 @@ public class Main {
                     }
 
                     if (subscriber != null) {
-                        eventBus.subscribe(subscriber);
-                        System.out.println(subscriber.toString() + " subscribed.");
+                        if(eventBus.subscribers.contains(subscriber)){
+                            System.out.println("heeere");
+                            System.out.println(subscriber.toString() + " already subscribed.");
+                            break;
+                        }
+                        else {
+                            eventBus.subscribe(subscriber);
+                            System.out.println(subscriber.toString() + " subscribed.");
+                        }
                     }
                     break;
 
@@ -123,12 +130,12 @@ public class Main {
                     }
                     else {
 
+                        System.out.println(eventBus.subscribers.size() + " subscribers");
+                        System.out.println("~~~~~~~~~~");
                         for (Subscriber s : eventBus.subscribers) {
-                            System.out.println(eventBus.subscribers.size() + " subscribers");
-                            System.out.println("~~~~~~~~~~");
                             System.out.println(s.toString());
-                            System.out.println("~~~~~~~~~~");
                         }
+                        System.out.println("~~~~~~~~~~");
                     }
                     break;
 
