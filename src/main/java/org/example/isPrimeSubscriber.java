@@ -1,6 +1,6 @@
 package org.example;
 
-public class isPrimeSubsriber implements Subscriber {
+public class isPrimeSubscriber implements Subscriber {
         
         public void notify(int number) {
             if (isPrime(number)) {

@@ -11,7 +11,6 @@ public class EventBus {
 
     public void unsubscribe(Subscriber subscriber) {
         subscribers.remove(subscriber);
-        System.out.println("Unsubscribed " + subscriber.toString());
     }
 
     public void notifyAll(int number) {

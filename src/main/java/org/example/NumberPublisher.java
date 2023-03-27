@@ -9,9 +9,9 @@ public class NumberPublisher {
     }
 
     public void publish(int number) {
-        System.out.println(" ___________________________________________");
-        System.out.println(" | Publishing number " + number + " to all subscribers   |");
-        System.out.println(" ___________________________________________");
+        System.out.println(" ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆");
+        System.out.println(" | Publishing number " + number + " to all subscribers |");
+        System.out.println(" ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆");
 
         eventBus.notifyAll(number);
     }
