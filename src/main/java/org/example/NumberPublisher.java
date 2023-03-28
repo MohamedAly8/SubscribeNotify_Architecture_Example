@@ -32,8 +32,5 @@ public class NumberPublisher {
             subscriber.notify(number);
         }
     }
-
-
-
 }
 
