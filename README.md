@@ -22,7 +22,7 @@ Overall, the Subscribe-Notify pattern allows for the design to be flexible, main
 
 ## Class Diagram
 
-![](/ClassDiagram/ClassDiagram.png "Class Diagram")
+![](./ClassDiagram/ClassDiagram.png "Class Diagram")
 
 
 ## References 
