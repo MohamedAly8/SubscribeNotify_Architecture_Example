@@ -1,20 +1,39 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class NumberPublisher {
     
-    private EventBus eventBus;
+    private ArrayList<Subscriber> subscribers = new ArrayList();
 
-    public NumberPublisher(EventBus eventBus){
-        this.eventBus = eventBus;
+    public NumberPublisher(){
+        this.subscribers = subscribers;
     }
 
-    public void publish(int number) {
+    public ArrayList<Subscriber> getSubscribers(){
+        return subscribers;
+    }
+
+    public void subscribe(Subscriber subscriber) {
+        this.subscribers.add(subscriber);
+    }
+
+    public void unsubscribe(Subscriber subscriber) {
+        this.subscribers.remove(subscriber);
+    }
+
+    public void notifyAll(int number) {
+
         System.out.println(" ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆");
         System.out.println(" | Publishing number " + number + " to all subscribers |");
         System.out.println(" ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆");
 
-        eventBus.notifyAll(number);
+        for (Subscriber subscriber : subscribers) {
+            subscriber.notify(number);
+        }
     }
+
+
 
 }
 

@@ -6,10 +6,9 @@ public class Main {
     public static void main(String[] args) {
 
         // creating event bus for decoupling publisher from subscribers
-        EventBus eventBus = new EventBus();
 
         // creating publisher
-        NumberPublisher numberPublisher = new NumberPublisher(eventBus);
+        NumberPublisher numberPublisher = new NumberPublisher();
 
         // creating subscribers
         isEvenSubscriber isEvenSubscriber = new isEvenSubscriber();
@@ -18,10 +17,10 @@ public class Main {
         isCompositeSubscriber isCompositeSubscriber = new isCompositeSubscriber();
 
         // adding subscribers
-        eventBus.subscribe(isEvenSubscriber);
-        eventBus.subscribe(isOddSubscriber);
-        eventBus.subscribe(isCompositeSubscriber);
-        eventBus.subscribe(isPrimeSubscriber);
+        numberPublisher.subscribe(isEvenSubscriber);
+        numberPublisher.subscribe(isOddSubscriber);
+        numberPublisher.subscribe(isCompositeSubscriber);
+        numberPublisher.subscribe(isPrimeSubscriber);
 
         System.out.println();
         System.out.println();
@@ -67,13 +66,13 @@ public class Main {
                     }
 
                     if (subscriber != null) {
-                        if(eventBus.subscribers.contains(subscriber)){
+                        if(numberPublisher.getSubscribers().contains(subscriber)){
                             System.out.println("heeere");
                             System.out.println(subscriber.toString() + " already subscribed.");
                             break;
                         }
                         else {
-                            eventBus.subscribe(subscriber);
+                            numberPublisher.subscribe(subscriber);
                             System.out.println(subscriber.toString() + " subscribed.");
                         }
                     }
@@ -103,8 +102,8 @@ public class Main {
                     }
 
                     if (subscriber != null) {
-                        if(eventBus.subscribers.contains(subscriber)) {
-                            eventBus.unsubscribe(subscriber);
+                        if(numberPublisher.getSubscribers().contains(subscriber)) {
+                            numberPublisher.unsubscribe(subscriber);
                             System.out.println(subscriber.toString() + " unsubscribed.");
                         }
                         else {
@@ -116,23 +115,23 @@ public class Main {
                 case 3:
                     System.out.print("Enter a number to publish: ");
                     int number = scanner.nextInt();
-                    if(eventBus.subscribers.isEmpty()){
+                    if(numberPublisher.getSubscribers().isEmpty()){
                         System.out.println("Error: No Subscribers, Subscribe to Subscriber first before publishing");
                         break;
                     }
-                    numberPublisher.publish(number);
+                    numberPublisher.notifyAll(number);
                     break;
 
                 case 4:
 
-                    if (eventBus.subscribers.isEmpty()){
+                    if (numberPublisher.getSubscribers().isEmpty()){
                         System.out.println("There are currently no subscribers!");
                     }
                     else {
 
-                        System.out.println(eventBus.subscribers.size() + " subscribers");
+                        System.out.println(numberPublisher.getSubscribers().size() + " subscribers");
                         System.out.println("~~~~~~~~~~");
-                        for (Subscriber s : eventBus.subscribers) {
+                        for (Subscriber s : numberPublisher.getSubscribers()) {
                             System.out.println(s.toString());
                         }
                         System.out.println("~~~~~~~~~~");
