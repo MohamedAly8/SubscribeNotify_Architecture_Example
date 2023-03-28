@@ -2,7 +2,7 @@
 
 ## To execute the project: 
 1) Go to ./out/artifacts/A1_Mohamed_jar
-2) Run this command in a terminal window: `java -jar A1_Mohamed.jar`
+2) Run this command in a terminal window: `java -jar A1_Mohamed.jar` from the above directory
 3) The program should start in the Terminal Window
 
 ## Important Notes
